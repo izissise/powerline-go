@@ -32,11 +32,11 @@ type powerline struct {
 	theme                  Theme
 	shellInfo              ShellInfo
 	reset                  string
-	resetBg                  string
-	hidden                  string
-	bold                  string
-	dim                  string
-	underlined                  string
+	resetBg                string
+	hidden                 string
+	bold                   string
+	dim                    string
+	underlined             string
 	symbolTemplates        Symbols
 	priorities             map[string]int
 	ignoreRepos            map[string]bool
@@ -111,16 +111,16 @@ func (p *powerline) color(prefix string, code uint8) string {
 }
 
 func (p *powerline) fgColor(code uint8) string {
-    if code == 0 {
-        return p.hidden
-    }
+	if code == 0 {
+		return p.hidden
+	}
 	return p.color("38", code)
 }
 
 func (p *powerline) bgColor(code uint8) string {
-    if code == 0 {
-        return p.resetBg
-    }
+	if code == 0 {
+		return p.resetBg
+	}
 	return p.color("48", code)
 }
 
@@ -268,9 +268,9 @@ func (p *powerline) drawRow(rowNum int, buffer *bytes.Buffer) {
 			}
 			buffer.WriteString(separatorBackground)
 			buffer.WriteString(p.fgColor(segment.separatorForeground))
-            if !segment.hideSeparators {
-                buffer.WriteString(segment.separator)
-            }
+			if !segment.hideSeparators {
+				buffer.WriteString(segment.separator)
+			}
 		} else {
 			if idx >= len(row)-1 {
 				if !p.hasRightModules() || p.supportsRightModules() {
@@ -297,9 +297,9 @@ func (p *powerline) drawRow(rowNum int, buffer *bytes.Buffer) {
 		if !p.isRightPrompt() {
 			buffer.WriteString(separatorBackground)
 			buffer.WriteString(p.fgColor(segment.separatorForeground))
-            if !segment.hideSeparators {
-                buffer.WriteString(segment.separator)
-            }
+			if !segment.hideSeparators {
+				buffer.WriteString(segment.separator)
+			}
 		}
 		buffer.WriteString(p.reset)
 	}

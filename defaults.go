@@ -115,7 +115,7 @@ var themes = map[string]Theme{
 		DotEnvFg: 15, // white
 		DotEnvBg: 55, // purple
 
-		AWSFg: 15, // white
+		AWSFg: 15,  // white
 		AWSBg: 172, // AWS orange
 
 		RepoCleanFg: 0,   // black

@@ -29,8 +29,8 @@ func segmentTermTitle(p *powerline) {
 	}
 
 	p.appendSegment("termtitle", segment{
-		content:        title,
-		priority:       MaxInteger, // do not truncate
+		content:    title,
+		priority:   MaxInteger, // do not truncate
 		rawContent: true,       // do not draw separators
 	})
 }

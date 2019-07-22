@@ -22,14 +22,14 @@ func (r repoStatsSensible) dirtySensible() bool {
 
 func addRepoStatsSegmentSensible(p *powerline, nChanges int, symbol string, foreground uint8, background uint8, printnChanges bool) {
 	if nChanges > 0 {
-        content := fmt.Sprintf("%s", symbol)
+		content := fmt.Sprintf("%s", symbol)
 		if printnChanges {
 			content = fmt.Sprintf("%d", nChanges) + content
 		}
 		p.appendSegment("git-status", segment{
-			content:    content,
-			foreground: foreground,
-			background: background,
+			content:        content,
+			foreground:     foreground,
+			background:     background,
 			hideSeparators: true,
 		})
 	}
@@ -44,10 +44,10 @@ func (r repoStatsSensible) addToPowerlineSensible(p *powerline, background uint8
 	addRepoStatsSegmentSensible(p, r.stashed, p.symbolTemplates.RepoStashed, p.theme.GitStashedFg, p.theme.GitStashedBg, false)
 	addRepoStatsSegmentSensible(p, r.untracked, p.symbolTemplates.RepoUntracked, p.theme.GitUntrackedFg, p.theme.GitUntrackedBg, false)
 	p.appendSegment("git-status", segment{
-            content:    "",
-			foreground: background,
-			background: background,
-    })
+		content:    "",
+		foreground: background,
+		background: background,
+	})
 }
 
 func parseGitStatsSensible(status []string) repoStatsSensible {
