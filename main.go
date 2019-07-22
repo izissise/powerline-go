@@ -34,6 +34,7 @@ type segment struct {
 	priority            int
 	width               int
 	hideSeparators      bool
+	rawContent          bool
 }
 
 type args struct {
@@ -113,6 +114,7 @@ var modules = map[string]func(*powerline){
 	"duration":            segmentDuration,
 	"exit":                segmentExitCode,
 	"git":                 segmentGit,
+	"gitsensible":         segmentGitSensible,
 	"gitlite":             segmentGitLite,
 	"hg":                  segmentHg,
 	"svn":                 segmentSubversion,
@@ -269,6 +271,20 @@ func main() {
 				themes[*args.Theme] = jsonTheme
 			} else {
 				println("Error reading theme")
+				println(err.Error())
+			}
+		}
+	}
+	if strings.HasSuffix(*args.Mode, ".json") {
+		modeTheme := symbolTemplates["compatible"]
+
+		file, err := ioutil.ReadFile(*args.Mode)
+		if err == nil {
+			err = json.Unmarshal(file, &modeTheme)
+			if err == nil {
+				symbolTemplates[*args.Mode] = modeTheme
+			} else {
+				println("Error reading mode")
 				println(err.Error())
 			}
 		}
