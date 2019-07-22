@@ -34,6 +34,7 @@ type segment struct {
 	priority            int
 	width               int
 	hideSeparators      bool
+	rawContent          bool
 }
 
 type args struct {
@@ -113,6 +114,7 @@ var modules = map[string]func(*powerline){
 	"duration":            segmentDuration,
 	"exit":                segmentExitCode,
 	"git":                 segmentGit,
+	"gitsensible":         segmentGitSensible,
 	"gitlite":             segmentGitLite,
 	"hg":                  segmentHg,
 	"svn":                 segmentSubversion,
